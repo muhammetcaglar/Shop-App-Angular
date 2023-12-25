@@ -1,0 +1,16 @@
+div a{
+  text-decoration: none;
+}
+.navbar-dropdown a:hover{
+  color:black;
+  background-color: rgb(208, 204, 204);
+  border-radius: 5px;
+}
+.navbar-menu a:hover{
+  background-color: rgba(255, 228, 196, 0.317);
+  border-radius: 5px;
+  color: black;
+}
+.navbar-dropdown a:active {
+  background-color: beige;
+}

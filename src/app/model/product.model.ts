@@ -4,6 +4,7 @@ export class Product{
     public name?:string,
     public price?:string,
     public imageUrl?:string,
-    public description?:string
+    public description?:string,
+    public category?:string
   ){}
 }

@@ -1,14 +1,14 @@
 module.exports= function(){
   return{
     products:[
-          {id:1,name:"Iphone XS",price:10000,imageUrl:'1.jpg',description:'Outlet'},
-          {id:2,name:"Iphone 7",price:6000,imageUrl:'2.jpg',description:'Good'},
-          {id:3,name:"Iphone 8",price:9000,imageUrl:'3.jpg',description:'Perfect'},
-          {id:4,name:"Iphone 9",price:9500,imageUrl:'4.jpg',description:'Great'},
-          {id:5,name:"Iphone 11",price:20000,imageUrl:'5.jpg',description:'Bad'},
-          {id:6,name:"Iphone 12",price:24000,imageUrl:'6.jpg',description:'Amazing'},
-          {id:7,name:"Iphone 13",price:35000,imageUrl:'7.jpg',description:'Good'},
-          {id:8,name:"Iphone 14",price:39000,imageUrl:'8.jpg',description:'Great'},
+          {id:1,name:"Iphone XS",price:10000,imageUrl:'iphone.png',description:'Outlet',category:"Phone"},
+          {id:2,name:"Iphone 7",price:6000,imageUrl:'iphone.png',description:'Good',category:"Phone"},
+          {id:3,name:"Iphone 8",price:9000,imageUrl:'iphone.png',description:'Perfect',category:"Phone"},
+          {id:4,name:"Iphone 9",price:9500,imageUrl:'iphone.png',description:'Great',category:"Phone"},
+          {id:5,name:"Iphone 11",price:20000,imageUrl:'iphone11.png',description:'Bad',category:"Phone"},
+          {id:6,name:"Iphone 12",price:24000,imageUrl:'iphone11.png',description:'Amazing',category:"Phone"},
+          {id:7,name:"macbook 13",price:35000,imageUrl:'macbook.png',description:'Good',category:'Computer'},
+          {id:8,name:"macbook 14",price:39000,imageUrl:'macbook.png',description:'Great',category:'Computer'},
 
     ],
     categories:[

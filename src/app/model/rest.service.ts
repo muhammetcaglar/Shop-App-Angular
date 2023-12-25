@@ -13,7 +13,7 @@ export class RestService {
     return this.http.get<Product[]>(this.baseUrl+'products');
   }
   getCategories(): Observable<Category[]>{
-    return this.http.get<Category[]>(this.baseUrl+'products');
+    return this.http.get<Category[]>(this.baseUrl+'categories');
 
   }
 }
