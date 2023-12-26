@@ -12,7 +12,7 @@
 
 .card-img-top {
   display: block;
-  margin: 0 auto; /* Center the image horizontally */
+  margin: 0 auto;
 }
   </style>
 </head>
@@ -22,6 +22,9 @@
 <div class="container pt-50 mb-5">
   <div class="row">
       <div class="col-3">
+
+        <app-card-summary></app-card-summary>
+
         <div class="list-group">
           <a href="#" (click)="changeCategory(null)" class="list-group-item list-group-item-action">
             All Categories
@@ -39,7 +42,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="alert alert-warning">
-             Stoklarımızda {{products.length}} adet ürün bulunmaktadır.
+             Bu sayfada {{products.length}} adet ürün bulunmaktadır.
             </div>
           </div>
           <ng-container *ngFor="let p of products">
@@ -56,17 +59,24 @@
                 </div>
                 <div class="card-footer text-center">
                   <button class="btn btn-outline-primary btn-sm">Details</button>
-                  <button class="btn btn-outline-primary btn-sm ml-3">Add To Cart</button>
+                  <button (click)="addProductToCart(p)" class="btn btn-outline-primary btn-sm ml-3">Add To Cart</button>
                 </div>
               </div>
             </div>
           </ng-container>
         </div>
-
-
-
-
-
+          <div class="row mt-4">
+              <div class="col">
+                  <div class="btn-group">
+                      <button (click)="changePage(page)"
+                      *ngFor="let page of pageNumbers"
+                      class="btn btn-outline-primary"
+                      [class.active]="page==selectedPage">
+                        {{page}}
+                      </button>
+                  </div>
+              </div>
+          </div>
       </div>
   </div>
 </div>
