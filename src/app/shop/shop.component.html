@@ -26,15 +26,15 @@
         <app-card-summary></app-card-summary>
 
         <div class="list-group">
-          <a href="#" (click)="changeCategory(null)" class="list-group-item list-group-item-action">
+          <button href="#" (click)="changeCategory(null)" class="list-group-item list-group-item-action">
             All Categories
-          </a>
-            <a *ngFor="let c of categories" (click)="changeCategory(c)"
+          </button>
+            <button *ngFor="let c of categories" (click)="changeCategory(c)"
             href="#"
             class="list-group-item list-group-item-action active"
             [class.active]="c==selectedCategory">
             {{c.name}}
-            </a>
+            </button>
 
         </div>
       </div>

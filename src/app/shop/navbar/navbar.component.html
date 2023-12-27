@@ -1,37 +1,38 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" >
-      SHOP APP
+    <a routerLink="/shop" class="navbar-item" >
+      ÇAĞLAR SHOP
     </a>
   </div>
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-        Home
+      <a routerLink="/shop" class="navbar-item">
+        Ana Sayfa
       </a>
       <a class="navbar-item">
-        Products
+        Ürünler
+      </a>
+      <a routerLink="/cart" class="navbar-item">
+        Sepetim
       </a>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
-          Cart
+          Aışveriş
         </a>
         <div class="navbar-dropdown">
+
           <a class="navbar-item">
-            Orders
+            Ürün ekle
           </a>
           <a class="navbar-item">
-            Add Products
+            Admin ürünleri
           </a>
           <a class="navbar-item">
-            Admin Products
-          </a>
-          <a class="navbar-item">
-            Add Category
+            Kategori ekle
           </a>
           <hr class="navbar-divider">
           <a class="navbar-item">
-            Categories
+            Kategoriler
           </a>
         </div>
       </div>
@@ -40,13 +41,13 @@
       <div class="navbar-item">
         <div class="buttons">
           <a class="button is-primary">
-            <strong>Register</strong>
+            <strong>Üye ol</strong>
           </a>
           <a class="button is-light">
-            Log in
+            Giriş
           </a>
-          <a class="button is-danger">
-            Logout
+          <a class="button is-danger btn-sm">
+            <i class="fa-solid fa-right-from-bracket"></i>
           </a>
         </div>
       </div>
