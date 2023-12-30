@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ChangeDetectorRef, Component, NgZone } from "@angular/core";
 import { ProductRepository } from "../model/product.repository";
 import { CategoryRepository } from "../model/category.repository";
 import { Product } from "../model/product.model";
@@ -22,7 +22,9 @@ export class ShopComponent{
     private productRepository: ProductRepository,
     private categoryRepository:CategoryRepository,
     private cart: Cart,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+    private zone: NgZone
     ){}
 
     get products(): Product[]{
@@ -57,6 +59,10 @@ export class ShopComponent{
     changeCategory(newCategory: Category | null) {
       this.selectedCategory = newCategory;
       this.selectedPage=1;
+
+      this.zone.run(() => {
+        this.cdr.detectChanges();
+      });
     }
     changePage(x: number){
         this.selectedPage=x;
