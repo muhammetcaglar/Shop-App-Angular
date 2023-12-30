@@ -41,14 +41,21 @@
               </td>
               <td>{{ item.product.name}}</td>
               <td>{{ item.product.price}}</td>
-              <td>{{ item.quantity}}</td>
+              <td><input type="text"
+                class="form-control"
+                style="width: 45px;"
+                [value]="item.quantity"
+                (change)="cart.updateQuantity(item.product, extractValue($event))"
+
+                ></td>
               <td *ngIf="item && item.product && item.product.price !== undefined">
                 {{ (item.quantity || 0) * item.product.price }} TL
               </td>
               <td>
-                <button class="btn btn-danger btn-sm">
+                <button class="btn btn-danger btn-sm" (click)="cart.removeItem(item.product.id)">
                   <i class="fa fa-times fa-fw"></i>
                 </button>
+
               </td>
             </tr>
             </tbody>
@@ -77,6 +84,7 @@
                   </tbody>
                 </table>
                 <div>
+
                   <button routerLink="/shop" class="btn btn-primary btn-sm">
                     Alışverişe devam et.
                   </button>

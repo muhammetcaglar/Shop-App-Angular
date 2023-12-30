@@ -27,22 +27,37 @@
 
         <div class="list-group">
           <button href="#" (click)="changeCategory(null)" class="list-group-item list-group-item-action">
-            All Categories
+            Tüm Kategoriler
           </button>
             <button *ngFor="let c of categories" (click)="changeCategory(c)"
             href="#"
             class="list-group-item list-group-item-action active"
             [class.active]="c==selectedCategory">
-            {{c.name}}
+            {{ getTranslatedCategoryName(c?.name ?? 'Hata') }}
             </button>
 
         </div>
       </div>
       <div class="col-9">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12 form-control-sm">
             <div class="alert alert-warning">
-             Bu sayfada {{products.length}} adet ürün bulunmaktadır.
+              <div class="form-inline  m-0 p-0">
+                <select class="form-control-sm" style="float: right;"
+                [value]="productsPerPage"
+                #selectElement (change)="changePageSize(parseNumber(selectElement?.value))">
+
+                  <option value="2">2 adet</option>
+                  <option value="3">3 adet</option>
+                  <option value="4">4 adet</option>
+                  <option value="5">5 adet</option>
+                  <option value="10">10 adet</option>
+                  <option value="15">15 adet</option>
+
+                </select>
+                <p style="float: right; margin-right: 5px;">Sayfada listelenen ürün adedi</p>
+              </div>
+             Bu sayfada {{selectedProducts.length}} adet ürün bulunmaktadır.
             </div>
           </div>
           <ng-container *ngFor="let p of products">
@@ -58,8 +73,8 @@
                   </small>
                 </div>
                 <div class="card-footer text-center">
-                  <button class="btn btn-outline-primary btn-sm">Details</button>
-                  <button (click)="addProductToCart(p)" class="btn btn-outline-primary btn-sm ml-3">Add To Cart</button>
+                  <button class="btn btn-outline-primary btn-sm">Detaylar</button>
+                  <button (click)="addProductToCart(p)" class="btn btn-outline-primary btn-sm ml-3">Ürünü Sepete Ekle</button>
                 </div>
               </div>
             </div>
@@ -71,7 +86,7 @@
                       <button (click)="changePage(page)"
                       *ngFor="let page of pageNumbers"
                       class="btn btn-outline-primary"
-                      [class.active]="page==selectedPage">
+                      [class.active]="page == selectedPage || (!selectedPage && page == 1)">
                         {{page}}
                       </button>
                   </div>

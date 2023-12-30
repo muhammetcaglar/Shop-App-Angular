@@ -4,7 +4,7 @@ import { CategoryRepository } from "../model/category.repository";
 import { Product } from "../model/product.model";
 import { Category } from "../model/category.model";
 import { Cart } from "../model/cart.model";
-import { Route, Router } from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'shop',
@@ -15,7 +15,9 @@ export class ShopComponent{
   public selectedCategory:Category | null=null;
   public productsPerPage=3;
   public selectedPage=1;
+  public selectedProducts:Product[]=[];
 
+  public selectedCategoryTurkish: any;
   constructor(
     private productRepository: ProductRepository,
     private categoryRepository:CategoryRepository,
@@ -25,11 +27,22 @@ export class ShopComponent{
 
     get products(): Product[]{
       let index = (this.selectedPage-1)*this.productsPerPage;
-      return this.productRepository
-                .getProducts(this.selectedCategory)
+      this.selectedProducts=this.productRepository
+      .getProducts(this.selectedCategory);
+      return  this.selectedProducts
                 .slice(index,index + this.productsPerPage);
     }
 
+    private translationMap: { [key: string]: string } = {
+      'phone': 'Telefon',
+      'computer': 'Bilgisayar',
+      'electronic': 'Elektronik'
+
+    };
+    getTranslatedCategoryName(categoryName: string): string {
+
+      return this.translationMap[categoryName.toLowerCase()] || categoryName;
+    }
     get pageNumbers(): number[]{
      return Array(Math.ceil(this.productRepository
         .getProducts(this.selectedCategory)
@@ -43,10 +56,22 @@ export class ShopComponent{
 
     changeCategory(newCategory: Category | null) {
       this.selectedCategory = newCategory;
+      this.selectedPage=1;
     }
     changePage(x: number){
         this.selectedPage=x;
     }
+    changePageSize(size:number | undefined) : void{
+      if (size !== undefined) {
+        this.productsPerPage = size;
+        this.changePage(1);
+      }
+
+    }
+    parseNumber(value: string | undefined): number | undefined {
+      return value ? +value : undefined;
+    }
+
 
     addProductToCart(product:Product){
           this.cart.addItem(product);

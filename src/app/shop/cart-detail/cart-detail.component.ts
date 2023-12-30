@@ -15,4 +15,13 @@ export class CartDetailComponent  implements OnInit{
   ngOnInit(): void {
 
   }
+  extractValue(event: Event): number {
+    const target = event.target as HTMLInputElement;
+    const inputValue = target.value.trim();
+
+    const numericValue = parseFloat(inputValue);
+    return isNaN(numericValue) ? 0 : numericValue;
+  }
+
+
 }

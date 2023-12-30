@@ -16,6 +16,14 @@ export class Cart {
     this.calculate();
   }
 
+  updateQuantity(product:Product,quantity:number){
+    let item = this.items.find(i=> i.product.id== product.id);
+    if(item!=undefined){
+      item.quantity=quantity;
+    }
+    this.calculate();
+  }
+
   calculate() {
     this.itemCount = 0;
     this.total = 0;

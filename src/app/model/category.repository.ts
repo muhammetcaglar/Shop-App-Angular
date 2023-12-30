@@ -20,6 +20,7 @@ import { RestService } from "./rest.service";
   }
 
   getCategoies(): Category[]{
+
     return this.categories;
   }
  }
