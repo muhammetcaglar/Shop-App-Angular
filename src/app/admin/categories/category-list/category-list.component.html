@@ -1,0 +1,27 @@
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>İsim</th>
+      <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of getCategories()">
+      <td>{{p.name}}</td>
+      <td>
+        <button class="btn btn-warning btn-sm" [routerLink]="['/admin/main/categories/edit', p.id]">Edit</button>
+        <button class="btn btn-danger btn-sm ml-3" (click)="deleteCategory(p)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <button class="btn btn-outline-primary mb-3" style="width: 100%;" routerLink="/admin/main/categories/create">Kategori Ekle</button>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+

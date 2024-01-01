@@ -21,6 +21,11 @@ import { ShopComponent } from './shop/shop.component';
       { path: 'shop', component: ShopComponent },
       { path: 'cart', component: CartDetailComponent },
       { path: 'checkout', component: CheckOutComponent },
+      {
+        path: 'admin',
+        loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule)
+      },
+
       { path: '**', redirectTo: "/shop" },
     ]),
     BrowserAnimationsModule

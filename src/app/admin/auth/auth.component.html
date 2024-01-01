@@ -1,0 +1,35 @@
+<div class="bg-danger p-2 text-center text-white" *ngIf="errorMessage!=null">
+  {{errorMessage}}
+</div>
+
+<div class="wrapper">
+  <div class="container">
+    <div class="col-left">
+      <div class="login-text">
+        <h2>Admin paneline hoş geldiniz.</h2>
+      </div>
+    </div>
+    <div class="col-right" style="margin-top: 100px;">
+      <div class="login-form">
+        <h2>Giriş</h2>
+        <form #form="ngForm" (ngSubmit)="login(form)">
+          <p>
+            <label>Kullanıcı adı veya email adresinizi giriniz.<span>*</span></label>
+            <input type="text" name="username" [(ngModel)]="username" placeholder="Kullanıcı adı veya email" required>
+          </p>
+          <p>
+            <label>Şifre<span>*</span></label>
+            <input type="password" name="password" [(ngModel)]="password" placeholder="Şifre" required>
+          </p>
+          <p>
+            <input type="submit"  value="Giris" />
+            <input type="button" class="mt-2" routerLink="/" value="Çıkış" />
+          </p>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+

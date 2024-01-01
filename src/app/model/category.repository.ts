@@ -16,11 +16,28 @@ import { RestService } from "./rest.service";
   }
 
   getCategory(id: number): Category | undefined {
-    return this.categories.find(p => p.id === id);
+    return this.categories.find(p => p.id == id);
   }
 
-  getCategoies(): Category[]{
+  getCategories(): Category[]{
 
     return this.categories;
+  }
+
+  saveCategory(category:Category){
+    if(category.id==null || category.id==0){
+      this.restService.addCategory(category)
+      .subscribe(p=> this.categories.push(p));
+    }
+    else{
+      this.restService.updateCategory(category)
+      .subscribe(p=>{
+        this.categories.splice(this.categories.findIndex(p=>p.id == category.id),1,category);
+      })
+    }
+  }
+  deleteCategory(category:Category){
+    this.restService.deleteCategory(category)
+    .subscribe(p=> this.categories.splice(this.categories.findIndex(p=> p.id==category.id),1));
   }
  }

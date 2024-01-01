@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Component, NgZone } from "@angular/core";
+import { ChangeDetectorRef, Component, Injectable, NgZone } from "@angular/core";
 import { ProductRepository } from "../model/product.repository";
 import { CategoryRepository } from "../model/category.repository";
 import { Product } from "../model/product.model";
 import { Category } from "../model/category.model";
 import { Cart } from "../model/cart.model";
 import { Router } from "@angular/router";
+
 
 @Component({
   selector: 'shop',
@@ -19,12 +20,12 @@ export class ShopComponent{
 
   public selectedCategoryTurkish: any;
   constructor(
-    private productRepository: ProductRepository,
-    private categoryRepository:CategoryRepository,
-    private cart: Cart,
-    private router: Router,
     private cdr: ChangeDetectorRef,
-    private zone: NgZone
+    private zone: NgZone,
+    private productRepository: ProductRepository,
+
+
+
     ){}
 
     get products(): Product[]{
@@ -35,16 +36,7 @@ export class ShopComponent{
                 .slice(index,index + this.productsPerPage);
     }
 
-    private translationMap: { [key: string]: string } = {
-      'phone': 'Telefon',
-      'computer': 'Bilgisayar',
-      'electronic': 'Elektronik'
 
-    };
-    getTranslatedCategoryName(categoryName: string): string {
-
-      return this.translationMap[categoryName.toLowerCase()] || categoryName;
-    }
     get pageNumbers(): number[]{
      return Array(Math.ceil(this.productRepository
         .getProducts(this.selectedCategory)
@@ -52,18 +44,9 @@ export class ShopComponent{
         .fill(0)
         .map((x,i)=>i+1);
     }
-    get categories(): Category[] {
-      return this.categoryRepository.getCategoies();
-    }
 
-    changeCategory(newCategory: Category | null) {
-      this.selectedCategory = newCategory;
-      this.selectedPage=1;
 
-      this.zone.run(() => {
-        this.cdr.detectChanges();
-      });
-    }
+
     changePage(x: number){
         this.selectedPage=x;
     }
@@ -78,9 +61,12 @@ export class ShopComponent{
       return value ? +value : undefined;
     }
 
-
-    addProductToCart(product:Product){
-          this.cart.addItem(product);
-          this.router.navigateByUrl('/cart');
+    getCategory(category : Category){
+        this.selectedCategory=category;
+        this.selectedPage=1;
+        this.zone.run(() => {
+          this.cdr.detectChanges();
+        });
     }
+
 }

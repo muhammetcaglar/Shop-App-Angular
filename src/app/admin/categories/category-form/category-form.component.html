@@ -1,0 +1,14 @@
+<h5>{{editing ? "Edit": "Create"}} Kategori</h5>
+
+<form #form="ngForm" (ngSubmit)="save(form)">
+  <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="category.name">
+  </div>
+  <button type="submit" class="btn btn-success mr-3">
+    {{editing ? "Edit" : "Create"}} Kategori
+  </button>
+  <button class="btn btn-warning" routerLink="/admin/main/categories">
+    İptal Et
+  </button>
+</form>

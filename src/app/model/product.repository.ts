@@ -17,12 +17,28 @@ import { Category } from "./category.model";
   }
 
   getProduct(id: number): Product | undefined {
-    return this.products.find(p => p.id === id);
+    return this.products.find(p => p.id == id);
   }
   getProducts(category: Category | null =null): Product[]{
     if(category)
         return this.products.filter(p=> p.category==category?.name);
     else
         return this.products;
+  }
+  saveProduct(product:Product){
+    if(product.id==null || product.id==0){
+      this.restService.addProduct(product)
+      .subscribe(p=> this.products.push(p));
+    }
+    else{
+      this.restService.updateProduct(product)
+      .subscribe(p=>{
+        this.products.splice(this.products.findIndex(p=>p.id == product.id),1,product);
+      })
+    }
+  }
+  deleteProduct(product:Product){
+    this.restService.deleteProduct(product)
+    .subscribe(p=> this.products.splice(this.products.findIndex(p=> p.id==product.id),1));
   }
  }

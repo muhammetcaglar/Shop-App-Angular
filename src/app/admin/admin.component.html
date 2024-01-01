@@ -1,0 +1,36 @@
+<div class="container-fluid">
+
+<div class="row">
+  <div class="bg-primary p-2 text-white col">
+    Admin Panel
+  </div>
+</div>
+
+<div class="row">
+
+
+  <div class="col-9">
+    <router-outlet></router-outlet>
+  </div>
+
+
+
+  <div class="col-3">
+    <div class="float-right">
+      <div class="navbar-item">
+        <div class="buttons">
+          <button class="btn btn-outline-info btn-block mb-2" routerLink="/shop">Ana sayfa</button>
+          <button routerLinkActive="active"  class="btn btn-outline-info btn-block mb-2" routerLink="/admin/main/products">Ürünler</button>
+          <button routerLinkActive="active"  class="btn btn-outline-info btn-block mb-2" routerLink="/admin/main/categories">Kategoriler</button>
+          <button routerLinkActive="active"  class="btn btn-outline-info btn-block mb-2" routerLink="/admin/main/orders">Siparişler</button>
+
+          <a class="button is-danger btn-sm" (click)="logout()" style="width: 100%;">
+            <i class="fa-solid fa-right-from-bracket float-right"></i>
+            <span style="margin-left: 10px;">Çıkış</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
